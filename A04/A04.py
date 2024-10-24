@@ -199,7 +199,7 @@ def fun_MM(x, srt, type):
     M1t = np.mean(srt)
     M2t = np.mean(srt**2)
     M1d, M2d, f = compute_moments(type, [x[0], x[1]])
-    return np.abs(M1d / M1t - 1) ** 2 + np.abs(M2d / M2t - 1) ** 2
+    return np.abs(M1d / M1t - 1) ** 2 + np.abs(M2d / M2t - 1)
 
 
 # Compute parameters of Hyper Exp distribution through Maximum Likelyhood Estimation (combined with optimization() function)
