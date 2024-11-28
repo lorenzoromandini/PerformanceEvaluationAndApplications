@@ -1,5 +1,3 @@
-from collections import deque
-
 import numpy as np
 
 
@@ -71,6 +69,7 @@ def computation():
     print("Prob(Printing): ", pS4)
     print("Average duration of a transaction: ", avgTranDuration, "min")
     print("Average cash in 20 hours: ", avgCash20h, "€")
+    print("C:", C)
 
 
 def setDistribution(state):

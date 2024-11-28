@@ -52,8 +52,11 @@ a_songs = [
 
 probabilities = [pi @ a for a in a_songs]
 
-for i, prob in enumerate(probabilities, 1):
-    print(f"Probability of song {i} being played:", prob)
+print("Probability of song 1 being played:", probabilities[0])
+print("Probability of song 2 being played:", probabilities[1])
+print("Probability of song 5 being played:", probabilities[2])
+print("Probability of song 9 being played:", probabilities[3])
+print("Probability of song 10 being played:", probabilities[4])
 
 # Average cost of songs
 a_cost = [float(value) for row in data for value in [row[5], row[5]]]
