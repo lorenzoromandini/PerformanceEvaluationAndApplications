@@ -34,8 +34,9 @@ def compute_mm1(lam):
 
 def compute_mm2(lam):
     print("**** M/M/2 ****")
-    rho = lam * D / 2
-    U = lam * D
+    c = 2
+    rho = lam * D / c
+    U = rho * c
     Ub = rho
     print("Total Utilization =", U)
     print("Average Utilization =", Ub)
@@ -63,12 +64,19 @@ def compute_mm2(lam):
 
 
 def compute_mmc(lam):
-    print("*** M/M/c ****")
-    c = 7
+    c = 1
+
+    while True:
+        rho = lam * D / c
+        Ub = rho
+        U = rho * c
+
+        if Ub <= 1 and Ub >= 0:
+            break
+        c += 1
+
+    print("**** M/M/c ****")
     print("c =", c)
-    rho = lam * D / c
-    U = lam * D
-    Ub = rho
     print("Total Utilization =", U)
     print("Average Utilization =", Ub)
 
@@ -77,13 +85,13 @@ def compute_mmc(lam):
 
     pi[0] = 1 / (
         (((c * rho) ** c) / factorial(c)) * (1 / (1 - rho))
-        + (sum(((c * rho) ** k / factorial(k)) for k in range(c)))
+        + sum(((c * rho) ** k / factorial(k)) for k in range(c))
     )
     pNlei[0] = pi[0]
 
     for i in range(1, 20):
         if i < c:
-            pi[i] = pi[0] / factorial(i) * ((c * rho) ** i)
+            pi[i] = pi[0] * (c * rho) ** i / factorial(i)
         else:
             pi[i] = pi[0] * (c**c) * (rho**i) / factorial(c)
         pNlei[i] = pNlei[i - 1] + pi[i]
@@ -94,10 +102,9 @@ def compute_mmc(lam):
     denominator = 1 + (1 - rho) * (factorial(c) / ((c * rho) ** c)) * sum(
         (c * rho) ** k / factorial(k) for k in range(c)
     )
-
     N = c * rho + (rho / (1 - rho)) / denominator
     Nq = N - U
-    print("Average queue length =", Nq)
+    print("Average queue length = ", Nq)
 
     Th = (D / (c * (1 - rho))) / denominator
     R = D + Th
