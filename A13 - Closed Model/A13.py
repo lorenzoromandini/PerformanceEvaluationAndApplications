@@ -53,7 +53,7 @@ for n in range(1, N + 1):
     Xk = v * X
 
     if n == N:
-        print("Throughput of the system:", X)
+        print("Throughput of the system [job/s]:", X)
         print("Average Response time of the system [ms]:", R * 1000)
         print(
             "Utilization:\n\t-Application Server:",
@@ -65,4 +65,4 @@ for n in range(1, N + 1):
             "\n\t-Disk2:",
             Uk[5],
         )
-        print("Throughput:\n\t-Disk1:", Xk[4], "\n\t-Disk2:", Xk[5])
+        print("Throughput [job/s]:\n\t-Disk1:", Xk[4], "\n\t-Disk2:", Xk[5])
