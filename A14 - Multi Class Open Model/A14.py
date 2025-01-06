@@ -76,9 +76,9 @@ RkA = [DkA[0] / (1 - Uk[0]), DkA[1] / (1 - Uk[1])]
 RkB = [DkB[0] / (1 - Uk[0]), DkB[1] / (1 - Uk[1])]
 RkC = [DkC[0] / (1 - Uk[0]), DkC[1] / (1 - Uk[1])]
 
-RA = RkA[0] + RkA[1]
-RB = RkB[0] + RkB[1]
-RC = RkC[0] + RkC[1]
+RA = sum(RkA)
+RB = sum(RkB)
+RC = sum(RkC)
 print("Average system response time (Class A - RA [min]):", RA)
 print("Average system response time (Class B - RB [min]):", RB)
 print("Average system response time (Class C - RC [min]):", RC)
@@ -88,7 +88,7 @@ Rk = [
     XA / X * RkA[1] + XB / X * RkB[1] + XC / X * RkC[1],
 ]
 
-R = Rk[0] + Rk[1]
+R = sum(Rk)
 print("Class independent average system response time (R [min]):", R)
 
 
@@ -96,14 +96,14 @@ NkA = [XA * RkA[0], XA * RkA[1]]
 NkB = [XB * RkB[0], XB * RkB[1]]
 NkC = [XC * RkC[0], XC * RkC[1]]
 
-NA = NkA[0] + NkA[1]
-NB = NkB[0] + NkB[1]
-NC = NkC[0] + NkC[1]
+NA = sum(NkA)
+NB = sum(NkB)
+NC = sum(NkC)
 print("Average number of jobs in the system (Class A - NA):", NA)
 print("Average number of jobs in the system (Class B - NB):", NB)
 print("Average number of jobs in the system (Class C - NC):", NC)
 
 Nk = [NkA[0] + NkB[0] + NkC[0], NkA[1] + NkB[1] + NkC[1]]
 
-N = Nk[0] + Nk[1]
+N = sum(Nk)
 print("Class independent average number of jobs in the system (N):", N)
