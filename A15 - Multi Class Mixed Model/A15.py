@@ -11,7 +11,8 @@ print(
 Nws = 94.09045576288045
 print("Average number of jobs in the Web Server:", Nws)
 
-Rc = [97.60157356686157, 253.79034765290316, 243.21709383083808]
+# System Response Time per class without the think time (Terminal)
+Rc = [535.4408320259408, 540.6370348058857, 243.21709383083808]
 print(
     f"Average system response time [min]:\n\t-Employees: {Rc[0]}\n\t-Maintainers: {Rc[1]}\n\t-Customers: {Rc[2]}"
 )
@@ -22,20 +23,7 @@ print("Throughput of Warehouse [job/min]:", Xwh)
 print("Class-independent average number of jobs in the system (N):", sum(Nc))
 
 Xc = [0.03666758853698876, 0.005528557410522435, 0.333333333333]
-
 X = sum(Xc)
 
-# Residence Times without the think time (terminal)
-RkA = [447.83925845907936, 0, 83.25562574114423, 4.3459478257173405]
-RkB = [288.84668715298255, 0, 251.79034765290316, 0]
-RkC = [228.2170938309131, 14.999999999925004, 0, 0]
-
-Rk = [
-    Xc[0] / X * RkA[0] + Xc[1] / X * RkB[0] + Xc[2] / X * RkC[0],
-    Xc[0] / X * RkA[1] + Xc[1] / X * RkB[1] + Xc[2] / X * RkC[1],
-    Xc[0] / X * RkA[2] + Xc[1] / X * RkB[2] + Xc[2] / X * RkC[2],
-    Xc[0] / X * RkA[3] + Xc[1] / X * RkB[3] + Xc[2] / X * RkC[3],
-]
-
-R = sum(Rk)
+R = Xc[0] / X * Rc[0] + Xc[1] / X * Rc[1] + Xc[2] / X * Rc[2]
 print("Class independent average system response time (R [min]):", R)
